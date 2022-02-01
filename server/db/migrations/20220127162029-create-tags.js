@@ -11,6 +11,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      color: {
+        type: Sequelize.STRING,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

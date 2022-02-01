@@ -1,0 +1,43 @@
+.tagItemContainer {
+  display: flex;
+  margin-bottom: 30px;
+  cursor: pointer;
+  padding: 12px 13px 12px 13px;
+  width: fit-content;
+  height: 45px;
+  background: #F1F1EF;
+  border-radius: 10px;
+}
+
+.tagItemContainerActiveModal {
+  margin-right: 70px;
+  display: flex;
+  margin-bottom: 30px;
+  cursor: pointer;
+  padding: 12px 13px 12px 13px;
+  width: fit-content;
+  height: 45px;
+  border-radius: 10px;
+}
+
+.tagItemContainerActiveTag {
+  background: #F1F1EF;
+  margin-right: 70px;
+  display: flex;
+  margin-bottom: 30px;
+  cursor: pointer;
+  padding: 12px 13px 12px 13px;
+  width: fit-content;
+  height: 45px;
+  border-radius: 10px;
+}
+
+
+.tagName { 
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #69665C;
+}

@@ -1,0 +1,84 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  // margin-top: 50px;
+  padding-top: 40px;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.divBtnContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.btnClose {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #69665C;
+  padding: 0;
+}
+
+.btnAddTodo {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  width: 150px;
+  height: 50px;
+  background: #69665C;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.labelFlex {
+  display: flex;
+  flex-direction: column;
+  color: #69665C;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 40px;
+}
+
+.inputTitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #69665C;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #F1F1EF;
+  outline: none;
+  margin-top: 15px;
+  padding-left: 16px;
+}
+
+.inputDescription {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #69665C;
+  width: 900px;
+  min-height: 153px;
+  border-radius: 10px;
+  background-color: #F1F1EF;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding-left: 16px;
+  padding-top: 16px;
+}
+

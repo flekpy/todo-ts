@@ -8,6 +8,7 @@ export interface ITodoState {
   loading: boolean,
   error: null | string
   todos: any[]
+  selectedTags: number[],
 }
 
 interface TodoLoadingAction {

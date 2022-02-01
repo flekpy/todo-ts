@@ -7,8 +7,6 @@ const initialState: IUserState = {
 };
 
 export default function userReducer(state = initialState, action: UserAction): IUserState {
-  console.log(action, 'action userReducer');
-
   switch (action.type) {
     case UserActionTypes.REGISTER_USER_LOADING: {
       return { ...state, loading: true, userData: [] };
