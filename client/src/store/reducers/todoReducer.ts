@@ -4,11 +4,10 @@ const initialState: ITodoState = {
   loading: false,
   error: null,
   todos: [],
+  selectedTags: [],
 };
 
 export default function todoReducer(state = initialState, action: TodoAction): ITodoState {
-  console.log(action, 'action todoReducer');
-
   switch (action.type) {
     case TodoActionTypes.ADD_TODO_LOADING: {
       return { ...state, loading: true };
@@ -20,7 +19,7 @@ export default function todoReducer(state = initialState, action: TodoAction): I
 
     case TodoActionTypes.ADD_TODO_SUCCESS: {
       return {
-        ...state, loading: false, error: null, todos: action.payload,
+        ...state, loading: false, error: null, todos: [...state.todos, action.payload],
       };
     }
 

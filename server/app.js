@@ -7,6 +7,8 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const tagsRouter = require('./routers/tagsRouter');
+const todosRouter = require('./routers/todosRouter/todosRouter');
 
 const app = express();
 
@@ -29,6 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
+
+app.use('/api/tags', tagsRouter);
+app.use('/api/new/todos', todosRouter);
 
 app.use((req, res, next) => {
   const error = createError(404, 'Запрашиваемой страницы не существует на сервере.');
