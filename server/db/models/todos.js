@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
     static associate({ User, Tags, TodosTags }) {
       this.belongsTo(User, { foreignKey: 'id' });
-      this.belongsToMany(Tags, { through: TodosTags, foreignKey: 'tag_id' });
+      this.belongsToMany(Tags, { through: TodosTags, foreignKey: 'todo_id', otherKey: 'tag_id' });
     }
   }
   Todo.init({

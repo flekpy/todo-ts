@@ -42,5 +42,6 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-alert': 'off',
     'react/function-component-definition': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
   },
 };

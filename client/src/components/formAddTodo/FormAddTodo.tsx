@@ -11,22 +11,28 @@ interface ITags {
   tags: any[],
   activeModal?: boolean,
   setModalActive: (arg: boolean) => void
+  selectTodoEdit?: {
+    title?: string
+    description?: string
+    selectTags?: any[]
+  }
+  modalEdit?: boolean
 }
 interface InputState {
-  title: string
-  description: string
+  title?: string | undefined
+  description?: string
   selectTag?: any
 }
 
-export default function FormAddTodo({ tags, activeModal, setModalActive }: ITags) {
+export default function FormAddTodo({
+  tags, activeModal, setModalActive, selectTodoEdit, modalEdit,
+}: ITags) {
   const dispatch = useDispatch();
   const todo = useTypedSelector((state) => state.todo);
-
   const inputsInitialState = {
-    title: '', description: '', selectTag: [],
+    title: selectTodoEdit?.title, description: selectTodoEdit?.description, selectTag: [],
   };
   const tagsContext = React.useContext(TagsContext);
-
   const [inputsValues, setInputsValues] = useState<InputState>(inputsInitialState);
 
   useEffect(() => {
@@ -35,6 +41,7 @@ export default function FormAddTodo({ tags, activeModal, setModalActive }: ITags
 
   const closeModal: React.ReactEventHandler = (e: any) => {
     setModalActive(false);
+    tagsContext?.setSelectedTags([]);
   };
 
   const handleValueInput: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -47,9 +54,6 @@ export default function FormAddTodo({ tags, activeModal, setModalActive }: ITags
 
   const addNewTodoFetch = async (e: any) => {
     e.preventDefault();
-    if (inputsValues.title.length === 0 || inputsValues.description.length === 0) {
-      alert('Значения не должны быть пустыми');
-    }
     dispatch(addNewTodo(inputsValues));
     setModalActive(false);
   };
@@ -65,33 +69,63 @@ export default function FormAddTodo({ tags, activeModal, setModalActive }: ITags
         >
           закрыть
         </button>
-        <button className={styles.btnAddTodo} type="submit">добавить</button>
+        {modalEdit ? (
+          <button className={styles.btnAddTodo} type="submit">добавить</button>
+        ) : (
+          <button className={styles.btnAddTodo} type="submit">изменить</button>
+        )}
       </div>
 
       <label className={styles.labelFlex} htmlFor="">
         Название
-        <input
-          onChange={handleValueInput}
-          className={styles.inputTitle}
-          type="text"
-          name="title"
-          placeholder="добавь название..."
-        />
+        {modalEdit ? (
+          <input
+            onChange={handleValueInput}
+            className={styles.inputTitle}
+            type="text"
+            name="title"
+            placeholder="добавь название..."
+          />
+        ) : (
+          <input
+            onChange={(e) => handleValueInput(e)}
+            className={styles.inputTitle}
+            value={inputsValues.title}
+            placeholder="добавь название..."
+            type="text"
+            name="title"
+          />
+        )}
       </label>
 
       <label className={styles.labelFlex} htmlFor="">
         Описание
-        <TextareaAutosize
-          onChange={handleValueTextArea}
-          className={styles.inputDescription}
-          placeholder="добавь описание..."
-          name="description"
-        />
+        {modalEdit ? (
+          <TextareaAutosize
+            onChange={handleValueTextArea}
+            className={styles.inputDescription}
+            placeholder="добавь описание..."
+            name="description"
+          />
+        ) : (
+          <TextareaAutosize
+            value={inputsValues.description}
+            onChange={handleValueTextArea}
+            className={styles.inputDescription}
+            placeholder="добавь описание..."
+            name="description"
+          />
+        )}
       </label>
 
       <label className={styles.labelFlex}>
         Тэги
-        {activeModal ? (<Tags tags={tags} activeModal={activeModal} />) : null}
+        {activeModal ? (
+          <Tags
+            tags={tags}
+            activeModal={activeModal}
+          />
+        ) : null}
       </label>
 
     </form>

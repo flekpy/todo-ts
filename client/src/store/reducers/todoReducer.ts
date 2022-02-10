@@ -23,6 +23,35 @@ export default function todoReducer(state = initialState, action: TodoAction): I
       };
     }
 
+    case TodoActionTypes.GET_ALL_TODO_SUCCESS: {
+      return {
+        ...state, loading: false, error: null, todos: [...state.todos, ...action.payload],
+      };
+    }
+
+    case TodoActionTypes.EDIT_STATUS_COMPLETED: {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: state.todos.map((todo) => {
+          if (todo.id === Number(action.payload)) {
+            return { ...todo, completed: !todo.completed };
+          }
+          return todo;
+        }),
+      };
+    }
+
+    case TodoActionTypes.DELETE_TODO_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: state.todos.filter((todo) => todo.id !== action.payload),
+      };
+    }
+
     default:
       return state;
   }
