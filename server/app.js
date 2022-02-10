@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(session(sessionConfig));
 
 app.use('/api/tags', tagsRouter);
-app.use('/api/new/todos', todosRouter);
+app.use('/api/todos/:id', todosRouter);
 
 app.use((req, res, next) => {
   const error = createError(404, 'Запрашиваемой страницы не существует на сервере.');

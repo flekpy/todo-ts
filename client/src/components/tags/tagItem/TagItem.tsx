@@ -13,14 +13,13 @@ interface Tag {
 
 export default function TagItem({ tag, activeModal }: Tag) {
   const [tagStatusActive, setTagStatusActive] = useState<boolean>(false);
-  console.log(tagStatusActive);
-
   const tagsContext = React.useContext(TagsContext);
-  console.log(tagsContext, 'tagsContext');
 
   useEffect(() => {
-    tagsContext?.setSelectedTags([]);
-  }, []);
+    if (tagsContext?.selectTags.find((tagID) => tagID === String(tag.id))) {
+      setTagStatusActive(true);
+    }
+  }, [tagsContext]);
 
   const handlerSelectTag: React.ReactEventHandler = (e: any) => {
     if (tagsContext?.selectTags.find((tag) => tag === e.target.id)) {
