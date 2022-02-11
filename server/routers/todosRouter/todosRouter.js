@@ -5,7 +5,6 @@ router.post('/', async (req, res) => {
   try {
     const userId = req.params.id;
     const { title, description, selectTag } = req.body;
-    // добавить юзер id
     const { dataValues } = await Todo.create({ title, description, user_id: userId });
 
     const arrTags = selectTag.map(async (tag) => {
@@ -44,16 +43,12 @@ router.get('/', async (req, res) => {
 router.put('/', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(req.params);
-    console.log(req.body);
     const { completed } = req.body;
-    console.log(id, 'req params put');
     if (Number(id)) {
       const statusTodo = await Todo.update(
         { completed },
         { returning: true, where: { id }, raw: true },
       );
-      console.log(statusTodo, 'туду обновленная');
       if (statusTodo[1][0].completed === true
         || statusTodo[1][0].completed === false) {
         res.json(id);

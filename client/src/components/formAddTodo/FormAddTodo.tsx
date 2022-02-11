@@ -5,13 +5,15 @@ import styles from './form.module.scss';
 import Tags from '../tags/Tags';
 import { TagsContext } from '../../context/Context';
 import { addNewTodo } from '../../store/actions/addNewTodoAction';
-import { useTypedSelector } from '../../hooks/useTypeSelector';
+import { editTodoThunk } from '../../store/actions/editStatusTodo';
+// import { useTypedSelector } from '../../hooks/useTypeSelector';
 
 interface ITags {
   tags: any[],
   activeModal?: boolean,
   setModalActive: (arg: boolean) => void
   selectTodoEdit?: {
+    id?: number
     title?: string
     description?: string
     selectTags?: any[]
@@ -19,21 +21,32 @@ interface ITags {
   modalEdit?: boolean
 }
 interface InputState {
+  id?: number
   title?: string | undefined
   description?: string
   selectTag?: any
 }
-
 export default function FormAddTodo({
   tags, activeModal, setModalActive, selectTodoEdit, modalEdit,
 }: ITags) {
   const dispatch = useDispatch();
-  const todo = useTypedSelector((state) => state.todo);
   const inputsInitialState = {
-    title: selectTodoEdit?.title, description: selectTodoEdit?.description, selectTag: [],
+    id: selectTodoEdit?.id,
+    title: selectTodoEdit?.title,
+    description: selectTodoEdit?.description,
+    selectTag: [],
   };
   const tagsContext = React.useContext(TagsContext);
   const [inputsValues, setInputsValues] = useState<InputState>(inputsInitialState);
+
+  useEffect(() => {
+    setInputsValues((prev) => ({
+      id: selectTodoEdit?.id,
+      title: selectTodoEdit?.title,
+      description: selectTodoEdit?.description,
+      selectTag: tagsContext?.selectTags,
+    }));
+  }, [selectTodoEdit]);
 
   useEffect(() => {
     setInputsValues((prev) => ({ ...prev, selectTag: tagsContext?.selectTags }));
@@ -58,8 +71,15 @@ export default function FormAddTodo({
     setModalActive(false);
   };
 
+  const editTodo = async (e: any) => {
+    e.preventDefault();
+    dispatch(editTodoThunk(inputsValues));
+    tagsContext?.setSelectedTags([]);
+    setModalActive(false);
+  };
+
   return (
-    <form onSubmit={addNewTodoFetch} className={styles.formContainer}>
+    <form onSubmit={modalEdit ? addNewTodoFetch : editTodo} className={styles.formContainer}>
 
       <div className={styles.divBtnContainer}>
         <button
