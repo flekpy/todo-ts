@@ -9,6 +9,7 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const tagsRouter = require('./routers/tagsRouter');
 const todosRouter = require('./routers/todosRouter/todosRouter');
+const todosEditRouter = require('./routers/todosRouter/todosEditRouter');
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use(session(sessionConfig));
 
 app.use('/api/tags', tagsRouter);
 app.use('/api/todos/:id', todosRouter);
+app.use('/api/todos/edit/:id', todosEditRouter);
 
 app.use((req, res, next) => {
   const error = createError(404, 'Запрашиваемой страницы не существует на сервере.');

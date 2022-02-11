@@ -13,6 +13,7 @@ interface IModal {
   modalEdit: boolean
   tags: any[]
 }
+
 interface SelectTag {
     title: string,
     description: string,

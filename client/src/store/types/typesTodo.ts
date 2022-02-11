@@ -4,6 +4,7 @@ export enum TodoActionTypes {
   ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS',
   GET_ALL_TODO_SUCCESS = 'GET_ALL_TODO_SUCCESS',
   EDIT_STATUS_COMPLETED = 'EDIT_STATUS_COMPLETED',
+  EDIT_TODO_SUCCESS = 'EDIT_TODO_SUCCESS',
   DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS'
 }
 
@@ -38,9 +39,20 @@ interface EditStatusCompletedSuccess {
   payload: number;
 }
 
+interface EditTodoSuccess {
+  type: TodoActionTypes.EDIT_TODO_SUCCESS;
+  payload: {
+    id: number
+    title: string
+    description: string
+    Tags: any[]
+  };
+}
 interface DeleteTodoSuccess {
   type: TodoActionTypes.DELETE_TODO_SUCCESS;
   payload: number;
 }
+
 export type TodoAction = TodoLoadingAction | TodoSuccessAction
-  | TodoErrorAction | GetAllTodoAction | EditStatusCompletedSuccess | DeleteTodoSuccess
+  | TodoErrorAction | GetAllTodoAction | EditStatusCompletedSuccess
+  | DeleteTodoSuccess | EditTodoSuccess

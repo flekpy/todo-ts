@@ -43,6 +43,25 @@ export default function todoReducer(state = initialState, action: TodoAction): I
       };
     }
 
+    case TodoActionTypes.EDIT_TODO_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        todos: state.todos.map((todo) => {
+          if (todo.id === action.payload.id) {
+            return {
+              ...todo,
+              title: action.payload.title,
+              description: action.payload.description,
+              Tags: action.payload.Tags,
+            };
+          }
+          return todo;
+        }),
+      };
+    }
+
     case TodoActionTypes.DELETE_TODO_SUCCESS: {
       return {
         ...state,

@@ -15,7 +15,8 @@ interface AllTodo {
   }
   setActive: (arg: boolean) => void
   setModalEdit: (arg: boolean) => void
-  setSelectTodoEdit: (arg: {title: string, description: string, selectTags: any[]}) => void
+  setSelectTodoEdit: (arg: {id: number,
+     title: string, description: string, selectTags: any[]}) => void
 }
 
 export const TodoItem: React.FC<AllTodo> = ({
@@ -36,7 +37,12 @@ export const TodoItem: React.FC<AllTodo> = ({
     setModalEdit(false);
     setActive(true);
     setModalMenu(false);
-    setSelectTodoEdit({ title: todo.title, description: todo.description, selectTags: todo.Tags });
+    setSelectTodoEdit({
+      id: todo.id,
+      title: todo.title,
+      description: todo.description,
+      selectTags: todo.Tags,
+    });
   };
 
   return (
