@@ -7,9 +7,14 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const { check } = require('express-validator');
 const tagsRouter = require('./routers/tagsRouter');
 const todosRouter = require('./routers/todosRouter/todosRouter');
 const todosEditRouter = require('./routers/todosRouter/todosEditRouter');
+const registerRouter = require('./routers/authRouter/registerRouter');
+const loginRouter = require('./routers/authRouter/loginRouter');
+const logoutRouter = require('./routers/authRouter/logoutRouter');
+const authRouter = require('./routers/authRouter/authRouter');
 
 const app = express();
 
@@ -33,6 +38,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(session(sessionConfig));
 
+app.use('/api/users/registration', [
+  check('name', 'Имя пользователя не должно быть пустым').notEmpty(),
+  check('email', 'Email пользователя не должен быть пустым').notEmpty(),
+  check('password', 'Пароль не может быть меньше 3 символов').isLength({ min: 1 }),
+], registerRouter);
+app.use('/api/users/login', loginRouter);
+app.use('/api/users/logout', logoutRouter);
+app.use('/api/users/me', authRouter);
 app.use('/api/tags', tagsRouter);
 app.use('/api/todos/:id', todosRouter);
 app.use('/api/todos/edit/:id', todosEditRouter);

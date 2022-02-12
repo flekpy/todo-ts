@@ -1,0 +1,33 @@
+.formAuth {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputFormAuth {
+  width: 310px;
+  height: 50px;
+  outline: none;   
+  border: none;
+  background: #F1F1EF;
+  border-radius: 10px;
+  color: #69665C;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  letter-spacing: 0.02em;
+}
+
+.btnFormAuth {
+  width: 310px;
+  height: 50px;
+  background: #69665C;
+  border-radius: 10px;
+  outline: none; 
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #FFFFFF;
+  letter-spacing: 0.03em;
+  margin-top: 5px;
+}

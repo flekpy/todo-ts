@@ -1,9 +1,8 @@
 import imgBanner from '../../assets/person2.png';
+import styles from './imgBanner.module.scss';
 
 export default function ImgBanner() {
   return (
-  // <div>
-    <img src={imgBanner} alt="" />
-  // </div>
+    <img className={styles.imgBanner} src={imgBanner} alt="" />
   );
 }
