@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 import logoutPNG from '../../assets/logout.png';
 import styles from './logout.module.scss';
 import { logoutUser } from '../../store/actions/userAction';

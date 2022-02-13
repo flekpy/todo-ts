@@ -11,7 +11,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(authUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.appContainer}>

@@ -1,6 +1,3 @@
 .TodosContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-content: flex-start;
+  columns: 2;
 }

@@ -20,19 +20,23 @@ interface ITags {
   }
   modalEdit?: boolean
 }
+
 interface InputState {
   id?: number | null
-  title?: string | undefined
+  userID?: number | null
+  title?: string
   description?: string
   selectTag?: any
 }
+
 export default function FormAddTodo({
   tags, activeModal, setModalActive, selectTodoEdit, modalEdit,
 }: ITags) {
   const dispatch = useDispatch();
   const userID = useTypedSelector((state) => state.user.userData?.id);
   const inputsInitialState = {
-    id: userID,
+    id: selectTodoEdit?.id,
+    userID,
     title: selectTodoEdit?.title,
     description: selectTodoEdit?.description,
     selectTag: [],
@@ -42,7 +46,8 @@ export default function FormAddTodo({
 
   useEffect(() => {
     setInputsValues((prev) => ({
-      id: userID,
+      id: selectTodoEdit?.id,
+      userID,
       title: selectTodoEdit?.title,
       description: selectTodoEdit?.description,
       selectTag: tagsContext?.selectTags,
@@ -55,6 +60,13 @@ export default function FormAddTodo({
 
   const closeModal: React.ReactEventHandler = (e: any) => {
     setModalActive(false);
+    setInputsValues((prev) => ({
+      id: null,
+      userID,
+      title: '',
+      description: '',
+      selectTag: [],
+    }));
     tagsContext?.setSelectedTags([]);
   };
 
@@ -69,12 +81,27 @@ export default function FormAddTodo({
   const addNewTodoFetch = async (e: any) => {
     e.preventDefault();
     dispatch(addNewTodo(inputsValues));
+    setInputsValues((prev) => ({
+      id: null,
+      userID,
+      title: '',
+      description: '',
+      selectTag: [],
+    }));
+    tagsContext?.setSelectedTags([]);
     setModalActive(false);
   };
 
   const editTodo = async (e: any) => {
     e.preventDefault();
     dispatch(editTodoThunk(inputsValues));
+    setInputsValues((prev) => ({
+      id: null,
+      userID,
+      title: '',
+      description: '',
+      selectTag: [],
+    }));
     tagsContext?.setSelectedTags([]);
     setModalActive(false);
   };
@@ -101,6 +128,7 @@ export default function FormAddTodo({
         Название
         {modalEdit ? (
           <input
+            value={inputsValues.title || ''}
             onChange={handleValueInput}
             className={styles.inputTitle}
             type="text"
@@ -109,9 +137,9 @@ export default function FormAddTodo({
           />
         ) : (
           <input
-            onChange={(e) => handleValueInput(e)}
-            className={styles.inputTitle}
             value={inputsValues.title}
+            onChange={handleValueInput}
+            className={styles.inputTitle}
             placeholder="добавь название..."
             type="text"
             name="title"
@@ -123,6 +151,7 @@ export default function FormAddTodo({
         Описание
         {modalEdit ? (
           <TextareaAutosize
+            value={inputsValues.description}
             onChange={handleValueTextArea}
             className={styles.inputDescription}
             placeholder="добавь описание..."
