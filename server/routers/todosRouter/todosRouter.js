@@ -55,7 +55,6 @@ router.put('/', async (req, res) => {
       }
     }
   } catch (e) {
-    console.log(e);
     res.json({ message: 'Ошибка сервера' });
   }
 });

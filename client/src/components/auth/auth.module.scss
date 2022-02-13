@@ -1,0 +1,84 @@
+.authDivContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authTitle {
+  margin-bottom: 80px;
+}
+
+.t {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 75px;
+  color: #D1E5F7;
+}
+
+.o {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 75px;
+  color: #FFCECE;  
+}
+
+.d {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 75px;
+  color: #DAF2D6; 
+}
+
+.do {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 75px;
+  color: #D2CEFF;
+}
+
+.divFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ulAuth {
+  display: flex;
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.loginAuth {
+  margin-right: 30px;
+}
+
+li {
+  list-style-type: none; 
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #69665C;
+  letter-spacing: 0.02em;
+ }
+
+li.activeLi {
+  padding-bottom: 3px;
+  border-bottom: 2px #69665C solid;
+}
+
+
+
+
+
+
+
+
+
+

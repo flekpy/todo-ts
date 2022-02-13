@@ -6,7 +6,7 @@ import Tags from '../tags/Tags';
 import { TagsContext } from '../../context/Context';
 import { addNewTodo } from '../../store/actions/addNewTodoAction';
 import { editTodoThunk } from '../../store/actions/editStatusTodo';
-// import { useTypedSelector } from '../../hooks/useTypeSelector';
+import { useTypedSelector } from '../../hooks/useTypeSelector';
 
 interface ITags {
   tags: any[],
@@ -21,7 +21,7 @@ interface ITags {
   modalEdit?: boolean
 }
 interface InputState {
-  id?: number
+  id?: number | null
   title?: string | undefined
   description?: string
   selectTag?: any
@@ -30,8 +30,9 @@ export default function FormAddTodo({
   tags, activeModal, setModalActive, selectTodoEdit, modalEdit,
 }: ITags) {
   const dispatch = useDispatch();
+  const userID = useTypedSelector((state) => state.user.userData?.id);
   const inputsInitialState = {
-    id: selectTodoEdit?.id,
+    id: userID,
     title: selectTodoEdit?.title,
     description: selectTodoEdit?.description,
     selectTag: [],
@@ -41,7 +42,7 @@ export default function FormAddTodo({
 
   useEffect(() => {
     setInputsValues((prev) => ({
-      id: selectTodoEdit?.id,
+      id: userID,
       title: selectTodoEdit?.title,
       description: selectTodoEdit?.description,
       selectTag: tagsContext?.selectTags,

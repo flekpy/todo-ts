@@ -43,5 +43,6 @@ module.exports = {
     'no-alert': 'off',
     'react/function-component-definition': 'off',
     'jsx-a11y/control-has-associated-label': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
   },
 };
