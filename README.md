@@ -1,7 +1,7 @@
 ## todo-ts
 
 
-<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img2.png" />
+<img align="left" alt="" width="1700px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img2.png" />
 
 &ensp;
 
@@ -11,7 +11,7 @@
 - **Базы данных**: PostgreSQL, Sequelize ORM
 
 
-<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img3.png" />
+<img align="left" alt="" width="1700px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img3.png" />
 &ensp;
 
 ### Структура проекта
@@ -30,4 +30,4 @@ $PROJECT_ROOT
 <br>
 
 
-<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img.png" />
+<img align="left" alt="" width="1700px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img.png" />
