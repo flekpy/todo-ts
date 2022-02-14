@@ -1,23 +1,20 @@
 ## todo-ts
 
 
-<br>
-<br>
+<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img2.png" />
 
+&ensp;
 
-<img align="left" alt="" width="1000px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img2.png" />
-
-
-<br>
-<br>
-
-
-#### Стек 
+### Стек 
 - **Фронтенд**: TypeScript, JS, HTML, CSS
 - **Бекенд**: Node.js, Express
 - **Базы данных**: PostgreSQL, Sequelize ORM
 
-#### Структура проекта
+
+<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img3.png" />
+&ensp;
+
+### Структура проекта
 
 ```
 $PROJECT_ROOT
@@ -33,4 +30,4 @@ $PROJECT_ROOT
 <br>
 
 
-<img align="left" alt="" width="1000px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img.png" />
+<img align="left" alt="" width="1500px" heigth="600px" src="https://github.com/flekpy/todo-ts/raw/master/images/img.png" />
