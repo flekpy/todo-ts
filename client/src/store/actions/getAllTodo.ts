@@ -8,7 +8,6 @@ export const getAllTodo = (userId: number) => async (dispatch: Dispatch<TodoActi
     const { data } = await axios.get(`http://localhost:5000/api/todos/${userId}`);
     dispatch({ type: TodoActionTypes.GET_ALL_TODO_SUCCESS, payload: data });
   } catch (error) {
-    console.log(error);
     dispatch({ type: TodoActionTypes.ADD_TODO_ERROR, payload: 'Ошибка сервера' });
   }
 };

@@ -5,7 +5,6 @@ router.put('/', async (req, res) => {
   try {
     const { id } = req.params;
     const { title, description, selectTag } = req.body;
-
     const updateTodo = await Todo.update(
       { title, description },
       {
@@ -30,7 +29,6 @@ router.put('/', async (req, res) => {
         res.json(updateTodo[1]);
       });
   } catch (e) {
-    console.log(e);
     res.json({ message: 'Ошибка сервера' });
   }
 });

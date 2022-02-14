@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './auth.module.scss';
+import { Img } from './img/Img';
 import { LoginForm } from './tabsAuth/LoginForm';
 import { RegisterForm } from './tabsAuth/RegisterForm';
 
@@ -40,6 +41,7 @@ const Auth: React.FC = () => {
         </ul>
         {activeTab === 'login' ? <LoginForm /> : <RegisterForm />}
       </div>
+      <Img />
     </div>
   );
 };

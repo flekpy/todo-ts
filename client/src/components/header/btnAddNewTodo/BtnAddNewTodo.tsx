@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import imgBtnAdd from '../../../assets/add.png';
 import styles from './btn.module.scss';
 import { SetActive } from '../../../models/interfaces/interfaces';

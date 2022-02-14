@@ -32,11 +32,8 @@ export const MainLayout: React.FC = () => {
     if (userID !== null) {
       dispatch(getAllTodo(userID));
     }
-  }, [userID]);
-
-  useEffect(() => {
     getTags().then((data) => setTags(data));
-  }, []);
+  }, [userID]);
 
   return (
     <div>
@@ -64,6 +61,7 @@ export const MainLayout: React.FC = () => {
             <ImgBanner />
             <Logout />
           </div>
+
           <TodoList
             active={modalActive}
             setActive={setModalActive}
